@@ -6,7 +6,6 @@ public class Credit extends Operation {
         super(date, montant);
     }
 
-    // Redéfinition de la méthode afficherType
     @Override
     public String afficherType() {
         return "Crédit";

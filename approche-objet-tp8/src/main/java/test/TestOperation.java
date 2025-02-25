@@ -6,7 +6,7 @@ import operations.Operation;
 
 public class TestOperation {
     public static void main(String[] args) {
-        // Création d'un tableau d'opérations (exemple avec 2 crédits et 2 débits)
+        // Création du jeu de données
         Operation[] operations = {
                 new Credit("2023-10-01", 150.0),
                 new Debit("2023-10-02", 50.0),
@@ -14,11 +14,11 @@ public class TestOperation {
                 new Debit("2023-10-04", 75.0)
         };
 
-        double montantGlobal = 0; // Initialisation du montant global
+        double montantGlobal = 0;
 
-        // Boucle pour parcourir et traiter chaque opération
+        // Boucle pour parcourir le jeu de données
         for (Operation operation : operations) {
-            // Affichage des informations de l'opération
+            // Affichage
             System.out.println("Type d'opération : " + operation.afficherType());
             System.out.println("Date de l'opération : " + operation.getDate());
             System.out.println("Montant de l'opération : " + operation.getMontant());
