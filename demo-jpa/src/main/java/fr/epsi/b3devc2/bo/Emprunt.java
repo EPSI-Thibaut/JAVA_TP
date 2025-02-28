@@ -25,7 +25,7 @@ public class Emprunt {
     @JoinColumn(name = "ID_CLIENT", nullable = false)
     private Client client;
 
-    @ManyToMany(mappedBy = "emprunts")
+    @ManyToMany(mappedBy = "emprunts", fetch = FetchType.EAGER)
     private List<Livre> livres;
 
     public Emprunt() {}

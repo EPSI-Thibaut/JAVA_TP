@@ -17,7 +17,7 @@ public class Client {
     @Column(nullable = false)
     private String prenom;
 
-    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Emprunt> emprunts;
 
     public Client() {}
