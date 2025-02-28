@@ -4,52 +4,48 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "LIVRE")
-public class Livre {
+@Table(name = "CLIENT")
+public class Client {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(nullable = false)
-    private String titre;
+    private String nom;
 
     @Column(nullable = false)
-    private String auteur;
+    private String prenom;
 
-    @ManyToMany
-    @JoinTable(
-            name = "COMPO",
-            joinColumns = @JoinColumn(name = "ID_LIV"),
-            inverseJoinColumns = @JoinColumn(name = "ID_EMP")
-    )
+    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Emprunt> emprunts;
 
-    public Livre() {}
+    public Client() {}
 
     // Getters and Setters
+
     public Integer getId() {
         return id;
     }
-    
+
     public void setId(Integer id) {
         this.id = id;
     }
 
-    public String getTitre() {
-        return titre;
+    public String getNom() {
+        return nom;
     }
 
-    public void setTitre(String titre) {
-        this.titre = titre;
+    public void setNom(String nom) {
+        this.nom = nom;
     }
 
-    public String getAuteur() {
-        return auteur;
+    public String getPrenom() {
+        return prenom;
     }
 
-    public void setAuteur(String auteur) {
-        this.auteur = auteur;
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
     }
 
     public List<Emprunt> getEmprunts() {

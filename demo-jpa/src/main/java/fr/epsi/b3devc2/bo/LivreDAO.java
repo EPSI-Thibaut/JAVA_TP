@@ -5,8 +5,28 @@ import jakarta.persistence.EntityManager;
 
 public class LivreDAO {
 
-    // Rechercher un livre par son ID
-    public static Livre findLivreById(EntityManager em, Integer id) {
+    // CRUD de la table livre
+
+    // Rechercher un livre par son ID -> R
+    public Livre findLivreById(EntityManager em, Integer id) {
         return em.find(Livre.class, id);
+    }
+
+    // Créer un nouveau livre -> C
+    public void createLivre(EntityManager em, Livre livre) {
+        em.persist(livre);
+    }
+
+    // Mettre à jour un livre -> U
+    public void updateLivre(EntityManager em, Livre livre) {
+        em.merge(livre);
+    }
+
+    // Supprimer un livre par ID -> D
+    public void deleteLivre(EntityManager em, Integer id) {
+        Livre livre = em.find(Livre.class, id);
+        if (livre != null) {
+            em.remove(livre);
+        }
     }
 }
