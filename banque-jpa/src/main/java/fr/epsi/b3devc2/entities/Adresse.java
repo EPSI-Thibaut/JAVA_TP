@@ -4,17 +4,20 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "Adresse")
-
 public class Adresse {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     private String numero;
     private String rue;
     private String codePostal;
     private String ville;
 
-    // Getters and Setters
+    @OneToOne(mappedBy = "adresse")
+    private Client client;
+
+    // Getters et Setters
     public Integer getId() {
         return id;
     }
@@ -53,5 +56,13 @@ public class Adresse {
 
     public void setVille(String ville) {
         this.ville = ville;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
     }
 }

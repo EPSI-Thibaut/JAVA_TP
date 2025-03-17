@@ -2,9 +2,10 @@ package fr.epsi.b3devc2.entities;
 
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 
 @Entity
-@DiscriminatorValue("LivretA")
+@Table(name = "LivretA")
 public class LivretA extends Compte {
     private double taux;
 

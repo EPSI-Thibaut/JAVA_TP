@@ -5,6 +5,7 @@
              version="3.1">
 
   <persistence-unit name="banque-jpa">
+
     <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
     <properties>
       <property name="jakarta.persistence.jdbc.url" value="jdbc:mariadb://localhost:3306/banque"/>
@@ -16,6 +17,9 @@
       <property name="hibernate.format_sql" value="true"/>
       <property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create"/>
       <property name="hibernate.hbm2ddl.auto" value="create"/>
+
+
+
     </properties>
   </persistence-unit>
 
