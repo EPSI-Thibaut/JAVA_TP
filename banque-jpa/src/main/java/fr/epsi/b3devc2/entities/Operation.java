@@ -13,7 +13,6 @@ public class Operation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Integer id;
-
     protected double montant;
     protected String motif;
     protected LocalDateTime date;

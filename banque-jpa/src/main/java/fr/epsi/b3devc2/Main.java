@@ -41,13 +41,20 @@ public class Main {
         banque.setNom("Ma Banque");
         em.persist(banque);
 
-        // Créer une adresse
-        Adresse adresse = new Adresse();
-        adresse.setNumero("1");
-        adresse.setRue("Rue de la Paix");
-        adresse.setCodePostal("75000");
-        adresse.setVille("Paris");
-        em.persist(adresse);
+        // Créer des adresses pour chaque client
+        Adresse adresse1 = new Adresse();
+        adresse1.setNumero("1");
+        adresse1.setRue("Rue de la Paix");
+        adresse1.setCodePostal("75000");
+        adresse1.setVille("Paris");
+        em.persist(adresse1);
+
+        Adresse adresse2 = new Adresse();
+        adresse2.setNumero("2");
+        adresse2.setRue("Avenue des Champs-Élysées");
+        adresse2.setCodePostal("75008");
+        adresse2.setVille("Paris");
+        em.persist(adresse2);
 
         // Créer des clients
         Client client1 = new Client();
@@ -55,16 +62,16 @@ public class Main {
         client1.setMotif("Client 1");
         client1.setDate(LocalDateTime.now());
         client1.setBanque(banque);
-        client1.setAdresse(adresse);
-        adresse.setClient(client1);
+        client1.setAdresse(adresse1);
+        adresse1.setClient(client1);
 
         Client client2 = new Client();
         client2.setMontant(1500.0);
         client2.setMotif("Client 2");
         client2.setDate(LocalDateTime.now());
         client2.setBanque(banque);
-        client2.setAdresse(adresse);
-        adresse.setClient(client2);
+        client2.setAdresse(adresse2);
+        adresse2.setClient(client2);
 
         em.persist(client1);
         em.persist(client2);
@@ -91,9 +98,9 @@ public class Main {
 
         // Créer une adresse
         Adresse adresse = new Adresse();
-        adresse.setNumero("2");
-        adresse.setRue("Avenue des Champs-Élysées");
-        adresse.setCodePostal("75008");
+        adresse.setNumero("3");
+        adresse.setRue("Boulevard Haussmann");
+        adresse.setCodePostal("75009");
         adresse.setVille("Paris");
         em.persist(adresse);
 
@@ -105,7 +112,7 @@ public class Main {
         client.setBanque(banque);
         client.setAdresse(adresse);
         adresse.setClient(client);
-        
+
         em.persist(client);
 
         // Créer un compte d'assurance vie

@@ -6,6 +6,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "LivretA")
+
 public class LivretA extends Compte {
     private double taux;
 
