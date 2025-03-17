@@ -1,6 +1,6 @@
 package fr.epsi.b3devc2.entities;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity

@@ -1,20 +1,34 @@
 package fr.epsi.b3devc2.entities;
 
-
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = 'Operation')
+@Table(name = "OPERATION")
 
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "TYPE")
 
 public class Operation {
-    @Override
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    private String montant;
-    private String motif;
-    private LocalDateTime date;
+    protected Integer id;
+
+    protected double montant;
+    protected String motif;
+    protected LocalDateTime date;
+
+    @ManyToOne
+    @JoinColumn(name = "compte_id")
+    private Compte compte;
+
+    public LocalDateTime getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDateTime date) {
+        this.date = date;
+    }
 
     public Integer getId() {
         return id;
@@ -24,11 +38,11 @@ public class Operation {
         this.id = id;
     }
 
-    public String getMontant() {
+    public double getMontant() {
         return montant;
     }
 
-    public void setMontant(String montant) {
+    public void setMontant(double montant) {
         this.montant = montant;
     }
 
@@ -40,12 +54,15 @@ public class Operation {
         this.motif = motif;
     }
 
-    public LocalDateTime getDate() {
-        return date;
+    public Compte getCompte() {
+        return compte;
     }
 
-    public void setDate(LocalDateTime date) {
-        this.date = date;
+    public void setCompte(Compte compte) {
+        this.compte = compte;
     }
+
+    public Operation() {
+    }
+
 }
-

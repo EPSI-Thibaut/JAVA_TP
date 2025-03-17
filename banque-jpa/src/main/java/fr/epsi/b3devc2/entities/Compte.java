@@ -9,17 +9,19 @@ import java.util.List;
 public abstract class Compte {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    private String numero;
-    private double solde;
+    protected Integer id;
+
+    protected String numero;
+    protected double solde;
 
     @ManyToOne
     @JoinColumn(name = "client_id")
-    private Client client;
+    protected Client client;
 
     @OneToMany(mappedBy = "compte")
-    private List<Operation> operations;
+    protected List<Operation> operations;
 
+    // Getters and Setters
     public Integer getId() {
         return id;
     }
