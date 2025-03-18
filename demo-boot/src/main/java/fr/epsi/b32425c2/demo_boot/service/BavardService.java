@@ -30,5 +30,4 @@ public class BavardService {
         System.out.println("BavardService postConstruct");
     }
 
-
 }

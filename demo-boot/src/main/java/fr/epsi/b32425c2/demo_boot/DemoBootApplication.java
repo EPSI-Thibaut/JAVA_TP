@@ -1,5 +1,6 @@
 package fr.epsi.b32425c2.demo_boot;
 
+import fr.epsi.b32425c2.demo_boot.service.NotificationService;
 import fr.epsi.b32425c2.demo_boot.service.BavardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -14,6 +15,9 @@ public class DemoBootApplication {
 	@Autowired
 	private BavardService bavardService;
 
+	@Autowired
+	private NotificationService notificationService;
+
 	public static void main(String[] args) {
 		SpringApplication.run(DemoBootApplication.class, args);
 	}
@@ -22,9 +26,15 @@ public class DemoBootApplication {
 	public String hello() {
 		return "Hello world";
 	}
-	// variante de l'étape 3 du tp (bonus)
+
 	@GetMapping("/blabla")
 	public String blabla() {
 		return bavardService.parler();
+	}
+
+	@GetMapping("/notify")
+	public String notifyUser() {
+		notificationService.notifyUser("Notification de test");
+		return "Notification envoyée";
 	}
 }
