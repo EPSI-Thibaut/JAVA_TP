@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class DemoBootApplication {
 
-	@Autowired
+	@Autowired // Injection de dépendance de BavardService
 	private BavardService bavardService;
 
-	@Autowired
+	@Autowired // Injection de dépendance de NotificationService
 	private NotificationService notificationService;
 
 	public static void main(String[] args) {

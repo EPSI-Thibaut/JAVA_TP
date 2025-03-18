@@ -3,7 +3,7 @@ package fr.epsi.b32425c2.demo_boot.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-@Component
+@Component // Création d'une classe NotificationService
 public class NotificationService {
 
     private MessageService messageService;
