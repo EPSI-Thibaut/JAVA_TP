@@ -17,10 +17,18 @@ public class Animal {
     @JoinColumn(name = "petstore_id")
     private PetStore petStore;
 
+    // Constructeur qui reprend les champs de la table Animal
+    public Animal(Long id, Date birth, String couleur, PetStore petStore) {
+        this.id = id;
+        this.birth = birth;
+        this.couleur = couleur;
+        this.petStore = petStore;
+    }
 
     public Animal(){
     }
 
+    // Getter et Setter
     public Date getBirth() {
         return birth;
     }

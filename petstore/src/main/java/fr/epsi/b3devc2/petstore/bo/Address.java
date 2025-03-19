@@ -16,9 +16,19 @@ public class Address {
     private String zipCode;
     private String city;
 
+    // Constructeur qui reprend les champs de la table Address
+    public Address(Long id, String number, String street, String zipCode, String city) {
+        this.id = id;
+        this.number = number;
+        this.street = street;
+        this.zipCode = zipCode;
+        this.city = city;
+    }
+
     public Address() {
     }
 
+    // Getter et Setter
     public String getCity() {
         return city;
     }

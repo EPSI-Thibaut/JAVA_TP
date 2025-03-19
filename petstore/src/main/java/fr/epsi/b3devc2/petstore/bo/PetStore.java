@@ -23,9 +23,20 @@ public class PetStore {
     @ManyToMany(mappedBy = "petStores")
     private List<Product> products;
 
+    // Constructeur qui reprend les champs de la table PetStore
+    public PetStore(Long id, String name, String managerName, Address address, List<Animal> animals, List<Product> products) {
+        this.id = id;
+        this.name = name;
+        this.managerName = managerName;
+        this.address = address;
+        this.animals = animals;
+        this.products = products;
+    }
+
     public PetStore() {
     }
 
+    // Getter et Setter
     public String getName() {
         return name;
     }

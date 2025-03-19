@@ -26,8 +26,8 @@ public class Product {
     private List<PetStore> petStores;
 
 
-    // Getters and Setters
 
+    // Getters and Setters
     public String getCode() {
         return code;
     }
