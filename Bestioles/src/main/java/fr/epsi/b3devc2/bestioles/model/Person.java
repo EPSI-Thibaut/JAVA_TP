@@ -1,69 +1,53 @@
-// Person.java
 package fr.epsi.b3devc2.bestioles.model;
 
 import jakarta.persistence.*;
-import java.util.HashSet;
+
+import java.io.Serializable;
 import java.util.Set;
 
 @Entity
 @Table(name = "person")
-public class Person {
-
+public class Person implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
-    @Column(name = "age")
     private Integer age;
-
-    @Column(name = "firstname", nullable = false)
     private String firstname;
-
-    @Column(name = "lastname", nullable = false)
     private String lastname;
-
-    @Column(name = "login", nullable = false, unique = true)
     private String login;
-
-    @Column(name = "mdp", nullable = false)
     private String mdp;
 
-    @Column(name = "active", nullable = false)
+
+    @Column(columnDefinition = "TINYINT(1)")
     private Boolean active;
 
-    @ManyToMany
-    @JoinTable(
-            name = "person_animals",
-            joinColumns = @JoinColumn(name = "person_id"),
-            inverseJoinColumns = @JoinColumn(name = "animals_id")
-    )
-    private Set<Animal> animals = new HashSet<>();
+
 
     @ManyToMany
     @JoinTable(
             name = "person_role",
-            joinColumns = @JoinColumn(name = "person_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id")
+            joinColumns = @JoinColumn(name = "person_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id")
     )
-    private Set<Role> roles = new HashSet<>();
+    private Set<Role> roles;
+
+    @ManyToMany(mappedBy = "persons")
+    private Set<Animal> animals;
 
     public Person() {
     }
 
-    public Person(Integer id, Integer age, String firstname, String lastname, String login, String mdp, Boolean active) {
-        this.id = id;
+    public Person(Integer age, String firstname, String lastname, String login, String mdp, Boolean active, Set<Role> roles, Set<Animal> animals) {
         this.age = age;
         this.firstname = firstname;
         this.lastname = lastname;
         this.login = login;
         this.mdp = mdp;
         this.active = active;
+        this.roles = roles;
+        this.animals = animals;
     }
 
-    public Person(Object o, int i, String john, String doe, String s, String password, boolean b, String s1, String number, String paris, String number1, String mail) {
-    }
-
-    // Getters et Setters
     public Integer getId() {
         return id;
     }
@@ -96,14 +80,6 @@ public class Person {
         this.lastname = lastname;
     }
 
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
     public String getMdp() {
         return mdp;
     }
@@ -120,6 +96,14 @@ public class Person {
         this.active = active;
     }
 
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
+
     public Set<Animal> getAnimals() {
         return animals;
     }
@@ -128,11 +112,11 @@ public class Person {
         this.animals = animals;
     }
 
-    public Set<Role> getRoles() {
-        return roles;
+    public String getLogin() {
+        return login;
     }
 
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
+    public void setLogin(String login) {
+        this.login = login;
     }
 }
