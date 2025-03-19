@@ -1,7 +1,14 @@
+// AnimalRepository.java
 package fr.epsi.b3devc2.bestioles.repository;
 
 import fr.epsi.b3devc2.bestioles.model.Animal;
-import org.springframework.data.repository.CrudRepository;
+import fr.epsi.b3devc2.bestioles.model.Species;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface AnimalRepository extends CrudRepository<Animal, Integer> {
+import java.util.List;
+
+public interface AnimalRepository extends JpaRepository<Animal, Integer> {
+
+    List<Animal> findBySpecies(Species species);
+    List<Animal> findByColorIn(List<String> colors);
 }

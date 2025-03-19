@@ -1,7 +1,14 @@
+// SpeciesRepository.java
 package fr.epsi.b3devc2.bestioles.repository;
 
 import fr.epsi.b3devc2.bestioles.model.Species;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface SpeciesRepository extends CrudRepository<Species, Integer> {
+import java.util.List;
+
+public interface SpeciesRepository extends JpaRepository<Species, Integer> {
+
+    Species findFirstByCommonName(String commonName);
+
+    List<Species> findByLatinNameContainingIgnoreCase(String latinName);
 }

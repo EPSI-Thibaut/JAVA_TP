@@ -60,6 +60,9 @@ public class Person {
         this.active = active;
     }
 
+    public Person(Object o, int i, String john, String doe, String s, String password, boolean b, String s1, String number, String paris, String number1, String mail) {
+    }
+
     // Getters et Setters
     public Integer getId() {
         return id;
